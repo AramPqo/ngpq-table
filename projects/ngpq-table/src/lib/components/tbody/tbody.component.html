@@ -27,9 +27,10 @@
             <div
               class="content"
               [class.template-content]="row[header.key]?.template"
-              [class.backlight]="row[header.key] | backlight: backlightValue"
               [innerHTML]="
-                row[header.key]?.template ?? row[header.key] | safe: 'html'
+                row[header.key]?.template ?? row[header.key]
+                  | backlight: backlightValue
+                  | safe: 'html'
               "></div>
           </ng-template>
         </div>

@@ -56,7 +56,7 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
       disableSort: false,
       paginatorSize: 4,
       directionLinks: true,
-      filterOptions: new FilterOption(true, false, 2000, false),
+      filterOptions: new FilterOption(true, false, 2000, true),
     };
   }
 
