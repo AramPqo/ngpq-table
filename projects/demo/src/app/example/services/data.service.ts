@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Action, SelectAction, Settings } from 'projects/ngpq-table/src/public-api';
+import { Settings } from 'projects/ngpq-table/src/public-api';
 import { TableSettings } from './settings';
 import { map } from 'rxjs/operators';
 import { Comments } from '../../models/comments.model';
+import { cloneDeep } from 'projects/ngpq-table/src/lib/helpers/table.util';
 
 interface TableData {
   data$: Observable<Comments[]>;
@@ -26,7 +27,7 @@ export class DataService {
         this.http.get<Comments[]>('/assets/db/comments.json'),
       );
     } else {
-      data$ = this.setAdditionalTemplate(of(this.injector.get('comments')));
+      data$ = this.setAdditionalTemplate(of(cloneDeep(this.injector.get('comments'))));
     }
 
     return { data$, settings };
