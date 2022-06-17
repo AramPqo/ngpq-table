@@ -1,0 +1,15 @@
+<div class="dropdown-container" (click)="toggle()">
+  <span *ngIf="defaultItem" class="default-item">{{ defaultItem }}</span>
+  <span class="icon">
+    <ngpq-icon icon="arrow"></ngpq-icon>
+  </span>
+
+  <ul *ngIf="isShow" class="dropdown-list-group">
+    <li
+      *ngFor="let item of items"
+      [class.active]="item === defaultItem"
+      class="dropdown-list-item"
+      (click)="emit(item, $event)"
+      [innerHTML]="(displayName ? item[displayName] : item) | safe: 'html'"></li>
+  </ul>
+</div>

@@ -1,0 +1,33 @@
+
+.header {
+    font-family: sans-serif;
+    padding: 5px 30px 35px 30px;
+    background: linear-gradient(180deg, rgba(246,250,253,1) 0%, rgb(233 245 253) 35%, rgba(203,209,216,1) 100%);
+    h1,
+    h4,
+    .docs-container {
+      text-align: center;
+      color: #565656;
+    }
+    .docs-container {
+      margin: 40px 0;
+      a {
+        padding: 10px;
+        margin:0 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        background: transparent;
+        border: 1px solid #f6fafd;
+        color: #565656;
+        transition: .5s;
+        &:hover {
+          outline: 1px solid #f6fafd;
+          transition: .5s;
+        }
+      }
+      a.active {
+        background: #f6fafd;
+        border: 1px solid transparent;
+      }
+    }
+  }

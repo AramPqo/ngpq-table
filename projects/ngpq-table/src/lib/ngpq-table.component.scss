@@ -1,0 +1,252 @@
+@import '../assets/scss/variable.scss';
+
+::ng-deep {
+  .ngpq-container {
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :disabled,
+    .disabled {
+      cursor: not-allowed !important;
+      opacity: 0.5;
+    }
+
+    input[type='checkbox'] {
+      cursor: pointer;
+    }
+
+    .ngpq-hidden {
+      visibility: hidden;
+    }
+
+    .backlight {
+      display: inline;
+      background-color: #ffff00;
+    }
+
+    .d-flex {
+      display: flex;
+    }
+
+    .disabled {
+      pointer-events: none;
+    }
+
+    .ngpq-btn {
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid $gray-400;
+      background-color: $gray-100;
+      color: $gray-600;
+      padding: 6px 12px;
+      border-radius: 3px;
+      max-width: 60px;
+    }
+
+    .rounded-right {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    .rounded-left {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    .form-dropdown .dropdown-list-group {
+      width: 100%;
+    }
+
+    .action-icon .ngpq-icon {
+      width: 20px;
+    }
+
+    .resize-handle {
+      width: 3px !important;
+    }
+
+    .actions-td {
+      display: flex;
+      justify-content: flex-end;
+
+      > div {
+        display: flex;
+        justify-content: flex-end;
+
+        &.check,
+        &.close {
+          padding: 0 5px;
+        }
+
+        div {
+          padding: 0 5px;
+        }
+      }
+
+      .check {
+        color: $success;
+      }
+
+      .close {
+        color: $danger;
+      }
+    }
+
+    .disable-resie {
+      .resize-handle {
+        display: none !important;
+      }
+    }
+  }
+
+  .ngpq-container {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    .table-header-container {
+      height: 55px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .text-right {
+        width: 100%;
+        text-align: right;
+      }
+
+      .create-action.disabled-create {
+        div {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+      }
+
+      .filteration-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+    }
+
+    .table-container {
+      table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        color: $gray-600;
+        position: relative;
+
+        thead {
+          background-color: #f6fafd;
+          user-select: none;
+        }
+      }
+    }
+
+    .table-footer {
+      align-items: center;
+      height: 70px;
+      padding: 10px;
+      color: $gray-600;
+      background-color: #f6fafd;
+      text-transform: capitalize;
+
+      .select-mode-container {
+        width: 60px;
+        border: 1px solid $gray-600;
+      }
+
+      .items-count {
+        flex: 3;
+      }
+
+      .paginator {
+        max-width: 500px;
+        overflow: auto;
+        margin-left: 40px;
+      }
+    }
+  }
+
+  .empty-table {
+    margin-bottom: 100px;
+
+    .loader-container {
+      display: none;
+    }
+
+    .empty-data-container {
+      position: absolute;
+      margin: 30px 0;
+      width: 99%;
+      text-align: center;
+    }
+  }
+
+  .load-data {
+    pointer-events: none !important;
+    cursor: not-allowed;
+
+    .backdrop {
+      cursor: not-allowed;
+      background: rgb(203 209 216 / 50%);
+      width: 100%;
+      height: calc(100% - 35px);
+      z-index: 1001;
+      position: absolute;
+    }
+
+    .loader-container {
+      top: 80px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 99%;
+      text-align: center;
+      z-index: 1002;
+
+      .loader {
+        width: 10px;
+        height: 10px;
+        background-color: $gray-600;
+        border-radius: 50%;
+        margin-left: 8px;
+        box-shadow: 1px 5px 11px 1px #596067;
+
+        &:nth-child(1) {
+          animation: loaderAnimation 2s infinite;
+        }
+
+        &:nth-child(2) {
+          animation: loaderAnimation 2.2s infinite;
+        }
+
+        &:nth-child(3) {
+          animation: loaderAnimation 2.4s infinite;
+        }
+      }
+    }
+
+    @keyframes loaderAnimation {
+      0% {
+        transform: translateY(-7px);
+      }
+
+      50% {
+        transform: translateY(7px);
+      }
+
+      100% {
+        transform: translateY(-7px);
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+<ng-template ngFor let-row [ngForOf]="displayData" let-rowIndex="index">
+  <tr
+    class="tbody-tr"
+    *ngIf="!(showForm && selectedRowIndex === rowIndex)"
+    #displayedDataList
+    (click)="getRowData(row, rowIndex, $event)">
+    <td
+      *ngFor="let header of tableHeaders; let headerIndex = index"
+      [class]="header.className">
+      <!-- Content -->
+      <ng-container
+        *ngIf="
+          (!header.isStatic && selectedRowIndex !== rowIndex) ||
+          (showDetails && !header.isStatic)
+        ">
+        <div
+          class="td-content"
+          *ngIf="row[header.key]; else noData"
+          (click)="getCellData(row, header, rowIndex, $event)">
+          <!-- Custom View Component -->
+          <ng-container *ngIf="header.renderComponent; else view">
+            <custom-view-component [header]="header" [data]="row"></custom-view-component>
+          </ng-container>
+          <!-- Custom View Component -->
+
+          <ng-template #view>
+            <div
+              class="content"
+              [class.template-content]="row[header.key]?.template"
+              [class.backlight]="row[header.key] | backlight: backlightValue"
+              [innerHTML]="
+                row[header.key]?.template ?? row[header.key] | safe: 'html'
+              "></div>
+          </ng-template>
+        </div>
+      </ng-container>
+      <!-- Content -->
+
+      <!-- Select Actions -->
+
+      <ng-container *ngIf="header.isStatic">
+        <div class="select-actions-container">
+          <input
+            type="checkbox"
+            class="select-actions"
+            [id]="'selectCb-' + rowIndex"
+            [(ngModel)]="selectedRows[rowIndex]"
+            (ngModelChange)="emitSelected()"
+            (click)="stopEventPropogation($event)" />
+        </div>
+      </ng-container>
+
+      <!-- Select Actions -->
+    </td>
+
+    <!-- Actions -->
+    <ng-container *ngIf="actions && actions.length">
+      <td class="actions-td">
+        <div class="actions-container">
+          <div
+            *ngFor="let action of actions"
+            [innerHTML]="action.template | safe: 'html'"
+            [class]="action.className"
+            (click)="getActionEvent(row, action, rowIndex, $event)"></div>
+        </div>
+      </td>
+    </ng-container>
+    <!-- Actions -->
+  </tr>
+
+  <!-- Form -->
+  <tr
+    *ngIf="showForm && selectedRowIndex === rowIndex"
+    ngpq-form
+    class="form-tr"
+    [row]="formValue"
+    [tableHeaders]="tableHeaders"
+    (formResult)="save($event)"
+    (cancel)="closeForm()"></tr>
+  <!-- Form -->
+
+  <!-- Details -->
+  <tr class="details-tr" *ngIf="showDetails && rowIndex === selectedRowIndex">
+    <td
+      [attr.colspan]="
+        actions && actions.length ? tableHeaders.length + 1 : tableHeaders.length
+      "
+      class="details-container">
+      <ng-template
+        [ngTemplateOutlet]="detailsTemplate"
+        [ngTemplateOutletContext]="{ row: row }">
+      </ng-template>
+    </td>
+  </tr>
+  <!-- Details -->
+</ng-template>
+
+<!-- No Data Template -->
+<ng-template #noData> - </ng-template>
+<!-- No Data Template -->

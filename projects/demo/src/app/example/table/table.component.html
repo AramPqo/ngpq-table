@@ -1,0 +1,60 @@
+<ng-container *ngIf="tableInputs.detailsTemplate">
+  <ngpq-table
+    [data]="data"
+    [settings]="settings"
+    [pageSizeOptions]="pageSizeOptions"
+    [filterOptions]="filterOptions"
+    [directionLinks]="tableInputs.directionLinks"
+    [scrollToTop]="tableInputs.scrollToTop"
+    [actions]="tableInputs.actions ? actions : []"
+    [selectActions]="tableInputs.selectActions ? selectActions : []"
+    [disableResize]="tableInputs.disableResize"
+    [disablePaginate]="tableInputs.disablePaginate"
+    [detailsTemplate]="tableDetails"
+    [disableSort]="tableInputs.disableSort"
+    [paginatorSize]="tableInputs.paginatorSize"
+    (tableInit)="tableDataChanges()"
+    (selectedActionEvent)="getSelectedActions($event)"
+    (actionEvent)="getActionEvent($event)"
+    (rowClick)="getRowClickEvent($event)"
+    (cellClick)="getcellData($event)"
+    (detectSelected)="detectSelected($event)">
+  </ngpq-table>
+
+  <ng-template let-detail="row" #tableDetails>
+    <ul>
+      <!-- Comments Details -->
+      <li>ID: {{ detail.id }}</li>
+      <li>Post ID: {{ detail.postId }}</li>
+      <li>Name: {{ detail.name }}</li>
+      <li>Email: {{ detail.email }}</li>
+      <li>Description: {{ detail.description }}</li>
+      <li>Status: {{ detail.status.value }}</li>
+      <li>Completed: <span [innerHTML]="detail.completed.template"></span></li>
+    </ul>
+    <!-- Comments Details -->
+  </ng-template>
+</ng-container>
+
+<ng-container *ngIf="!tableInputs.detailsTemplate">
+  <ngpq-table
+    [data]="data"
+    [settings]="settings"
+    [pageSizeOptions]="pageSizeOptions"
+    [filterOptions]="filterOptions"
+    [directionLinks]="tableInputs.directionLinks"
+    [scrollToTop]="tableInputs.scrollToTop"
+    [actions]="tableInputs.actions ? actions : []"
+    [selectActions]="tableInputs.selectActions ? selectActions : []"
+    [disableResize]="tableInputs.disableResize"
+    [disablePaginate]="tableInputs.disablePaginate"
+    [disableSort]="tableInputs.disableSort"
+    [paginatorSize]="tableInputs.paginatorSize"
+    (tableInit)="tableDataChanges()"
+    (selectedActionEvent)="getSelectedActions($event)"
+    (actionEvent)="getActionEvent($event)"
+    (rowClick)="getRowClickEvent($event)"
+    (cellClick)="getcellData($event)"
+    (detectSelected)="detectSelected($event)">
+  </ngpq-table>
+</ng-container>

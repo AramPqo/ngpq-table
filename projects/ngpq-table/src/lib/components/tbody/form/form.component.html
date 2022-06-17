@@ -1,0 +1,95 @@
+<ng-container [formGroup]="form">
+  <td
+    *ngFor="let header of tableHeaders; let headerIndex = index"
+    [class]="header.className + ' form-td'"
+    [style.overflow]="
+      (selectedHeaderIndex === headerIndex ? { overflow: 'visible' } : '') | safe: 'style'
+    "
+    [style]="
+      (selectedHeaderIndex === headerIndex ? { overflow: 'visible' } : '') | safe: 'style'
+    ">
+    <ng-container
+      *ngIf="
+        !header.isStatic && form.get(header.key) && header.form?.type !== 'select';
+        else itemsDp
+      ">
+      <ng-container
+        *ngIf="
+          header?.form?.type !== 'checkbox' &&
+          header?.form?.type !== 'textarea' &&
+          header?.form?.type !== 'radio'
+        ">
+        <input
+          [id]="header.key"
+          [type]="header?.form?.type ? header?.form?.type : 'text'"
+          [formControlName]="header.key"
+          [attr.disabled]="header?.form?.disabled ? header?.form?.disabled : null"
+          [placeholder]="header?.form?.placeholder ? header?.form?.placeholder : ''" />
+      </ng-container>
+
+      <ng-container *ngIf="header?.form?.type === 'textarea'">
+        <textarea
+          [id]="header.key"
+          [formControlName]="header.key"
+          [attr.disabled]="header?.form?.disabled ? header?.form?.disabled : null"
+          [placeholder]="header?.form?.placeholder ? header?.form?.placeholder : ''">
+        </textarea>
+      </ng-container>
+
+      <ng-container *ngIf="header?.form?.type === 'checkbox'">
+        <input
+          [id]="header.key"
+          type="checkbox"
+          [formControlName]="header.key"
+          [attr.disabled]="header?.form?.disabled ? header?.form?.disabled : null" />
+      </ng-container>
+
+      <ng-container *ngIf="header?.form?.type === 'radio'">
+        <div
+          class="radio-content"
+          *ngFor="let control of selectItems[header.key]; let i = index">
+          <label [for]="header.key + i" class="radio-label"> {{ control }} </label>
+          <input
+            [id]="header.key + i"
+            type="radio"
+            [value]="control"
+            [checked]="form.get(header.key)?.value === control"
+            [formControlName]="header.key"
+            [attr.disabled]="header?.form?.disabled ? header?.form?.disabled : null" />
+        </div>
+      </ng-container>
+      <div class="error-message" *ngIf="form.invalid && form.get(header.key)?.errors">
+        {{ header?.form?.errorMessage }}
+      </div>
+    </ng-container>
+
+    <ng-template #itemsDp>
+      <div
+        *ngIf="header.form && header.form.type === 'select'"
+        (click)="selectedHeaderIndex = headerIndex"
+        class="form-dropdown-container">
+        <ngpq-dropdown
+          class="form-dropdown"
+          [defaultItem]="
+            form.get(header.key)?.value
+              ? form.get(header.key)?.value
+              : header.form.placeholder
+              ? header.form.placeholder
+              : '   '
+          "
+          [items]="selectItems[header.key] ? selectItems[header.key] : []"
+          (dropdownValue)="patchFormValue($event, header)">
+        </ngpq-dropdown>
+      </div>
+    </ng-template>
+  </td>
+
+  <td class="actions-td form">
+    <div (click)="save()" class="check" [class.disabled]="form.invalid">
+      <ngpq-icon class="action-icon" icon="check"> </ngpq-icon>
+    </div>
+    <div (click)="close()" class="close">
+      <ngpq-icon class="action-icon" icon="times"> </ngpq-icon>
+    </div>
+  </td>
+</ng-container>

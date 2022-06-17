@@ -1,0 +1,68 @@
+.form-container {
+  .icon {
+    font-size: 25px;
+    position: fixed;
+    cursor: pointer;
+    color: #6c757d;
+    background: #eaf5fd;
+    padding: 3px;
+    z-index: 200;
+  }
+
+  .settings-icon {
+    left: 0;
+
+    &.opend {
+      left: 250px !important;
+    }
+  }
+
+  .form-content {
+    width: 250px;
+    position: fixed;
+    left: -250px;
+    flex: 1;
+    background: #eaf5fd;
+    padding: 10px;
+    border: 1px solid #cdd4db;
+    z-index: 200;
+
+    &.opend {
+      left: 0 !important;
+    }
+
+    label {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+
+      .paginator-max-size {
+        width: 40px;
+      }
+    }
+
+    .filter-options {
+      .options-group-content {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      label {
+        margin: 2px 0 2px 5px;
+
+        .typeahead-time {
+          width: 60px;
+          border: 1px solid transparent;
+
+          &.ng-invalid {
+            &:focus-visible {
+              outline: 1px red;
+            }
+
+            border-color: red;
+          }
+        }
+      }
+    }
+  }
+}

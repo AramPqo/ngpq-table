@@ -1,0 +1,26 @@
+<div class="d-flex">
+  <div class="filter-container" *ngIf="filterDetails">
+    <input 
+        #filterEl
+        (keyup)="next();"
+        type="text" 
+        class="form-control rounded-right">
+      <div class="search">
+          <ngpq-icon icon="search"></ngpq-icon>
+      </div>
+  </div>
+
+  <div *ngIf="activeFilterValue" class="active-filter-options-container">
+    <div>
+      <div class="active-filters">
+        <div class="usual filter-option">
+          <div class="search">
+            <ngpq-icon icon="search"></ngpq-icon>
+          </div>
+        </div>
+        <div class="filter-value">{{activeFilterValue}}</div>
+      </div>
+      <div class="chips" (click)="reset();">&times;</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+<svg role="img" class="ngpq-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" [attr.viewBox]="icon.viewBox"><path fill="currentColor" [attr.d]="icon.d"></path></svg>

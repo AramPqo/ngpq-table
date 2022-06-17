@@ -1,0 +1,27 @@
+@import './../../../../assets/scss/variable.scss';
+
+td {
+  padding: 25px 10px !important;
+  position: relative;
+  @include text-ellipsis;
+  .form-dropdown-container,
+  input,
+  textarea {
+    border: 1px solid $gray-600;
+  }
+  input {
+    padding: 5px 10px;
+  }
+  .action.check.disabled {
+    pointer-events: all;
+  }
+}
+
+.error-message {
+  position: absolute;
+  margin-top: 5px;
+  color: #cb0505;
+  width: 100%;
+  font-size: 14px;
+  @include text-ellipsis;
+}

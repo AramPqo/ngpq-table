@@ -1,0 +1,121 @@
+<div
+  class="ngpq-container"
+  [class.empty-table]="!displayData.length || !displayData.length"
+  #tableContainer>
+  <!-- Header -->
+  <div
+    class="table-header-container"
+    [class.ngpq-hidden]="!mainData?.length"
+    *ngIf="filterOptions || createAction">
+    <!-- Filteraction -->
+    <div *ngIf="filterOptions && mainData?.length" class="filteration-container">
+      <ngpq-filter
+        [mainData]="mainData"
+        [data]="data"
+        [filterDetails]="filterDetails"
+        [filterOptions]="filterOptions"
+        (emitFilteredData)="getFilteredData($event)">
+      </ngpq-filter>
+    </div>
+    <!-- Filteraction -->
+
+    <!-- Top Action -->
+    <div
+      *ngIf="createAction"
+      class="create-action"
+      [class.text-right]="!filterOptions"
+      [class.disabled-create]="isCreate">
+      <div
+        [innerHTML]="createAction.template | safe: 'html'"
+        [class]="createAction.className"
+        (click)="getCreateActionEvent()"></div>
+    </div>
+    <!-- Top Action -->
+  </div>
+
+  <!-- Header -->
+  <div
+    *ngIf="tableHeaders?.length"
+    class="table-container"
+    [class.load-data]="loaderService.loadData$ | async">
+    <table tableResize [disabled]="disableResize" (mouseover)="mouseOver.emit($event)">
+      <!-- Thead -->
+      <thead
+        ngpq-thead
+        [disableSort]="disableSort"
+        [tableHeaders]="tableHeaders"
+        [isSelectAll]="isSelectAll"
+        [actions]="actions"
+        [selectActions]="selectActions"
+        (sort)="setSort($event)"
+        (selectedAction)="emitSelectedActions($event)"></thead>
+      <!-- Thead -->
+
+      <!-- Loader -->
+      <div
+        *ngIf="(loaderService.loadData$ | async) && data && data?.length"
+        class="loader-container text-center">
+        <div class="loader"></div>
+        <div class="loader"></div>
+        <div class="loader"></div>
+      </div>
+      <!-- Loader -->
+
+      <div class="backdrop"></div>
+
+      <!-- Tbody -->
+      <ng-container *ngIf="data && data?.length; else emptyData">
+        <tbody
+          ngpq-tbody
+          [displayData]="displayData"
+          [detailsTemplate]="detailsTemplate"
+          [tableHeaders]="tableHeaders"
+          [backlightValue]="backlightValue"
+          [isCreate]="isCreate"
+          [createAction]="createAction"
+          [actions]="actions"
+          (actionEvent)="getActionEvent($event)"
+          (tableInit)="emitTableInit()"
+          (cellClickEvent)="emitCellData($event)"
+          (rowClickEvent)="emitRowData($event)"
+          (selectedActionEvent)="getSelectedAction($event)"></tbody>
+      </ng-container>
+      <!-- Tbody -->
+    </table>
+
+    <!-- Pagination -->
+
+    <div *ngIf="data?.length && !disablePaginate" class="d-flex table-footer">
+      <div class="items-count">
+        Showing {{ pageSize !== data?.length ? displayData.length : pageSize }} of
+        {{ data?.length }} Entries
+      </div>
+      <div class="select-mode-container dropdown-container" *ngIf="modes.length > 1">
+        <ngpq-dropdown
+          [defaultItem]="pageSize"
+          [items]="modes"
+          (dropdownValue)="scrollToTop(tableContainer); setMode($event)">
+        </ngpq-dropdown>
+      </div>
+
+      <div *ngIf="data.length > pageSize" class="paginator">
+        <ngpq-pagination
+          [pageSize]="pageSize"
+          [maxSize]="paginatorSize"
+          [page]="pageNumber"
+          [directionLinks]="directionLinks"
+          [totalElements]="data.length"
+          (pageChange)="scrollToTop(tableContainer); pageChange($event)">
+        </ngpq-pagination>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+
+    <!-- Warning -->
+    <ng-template #emptyData>
+      <div class="empty-data-container" [innerHTML]="warning | safe: 'html'"></div>
+    </ng-template>
+    <!-- Warning -->
+  </div>
+</div>

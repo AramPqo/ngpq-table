@@ -1,0 +1,96 @@
+@import '../../../assets/scss/variable.scss';
+:host(.disabled-hover) .dropdown-container {
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+:host(.form-dropdown) .dropdown-container {
+  .default-item {
+    width: 80%;
+  }
+}
+
+.dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 5px;
+  height: 100%;
+  cursor: pointer;
+  color: $gray-600;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+
+  .default-item {
+    text-transform: capitalize;
+    @include text-ellipsis;
+  }
+
+  .icon {
+    width: 22px;
+    height: 29px;
+    transform: translate(0, 2px) rotate(180deg) scale(0.9);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: 4px;
+    position: absolute;
+    max-height: 200px;
+    overflow: auto;
+    top: 100%;
+    left: 0;
+    z-index: 2000;
+    margin: 2px 0 0;
+    font-size: 14px;
+    border: 1px solid $gray-100;
+    li {
+      display: block;
+      position: relative;
+      padding: 8px 16px;
+      color: $gray-600;
+      text-decoration: none;
+      background-color: $gray-100;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      text-transform: capitalize;
+      white-space: nowrap;
+      &:hover {
+        background-color: $gray-300;
+      }
+    }
+    li.active {
+      z-index: 2;
+      color: $gray-100;
+      background-color: $gray-600;
+      border-color: $gray-600;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background-color: $gray-200;
+}
+
+::-webkit-scrollbar-track-piece:end {
+  background-color: $gray-200;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-400;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $gray-400;
+}

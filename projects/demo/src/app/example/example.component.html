@@ -1,0 +1,41 @@
+<div class="basic-container">
+  <div class="d-flex justify-between">
+    <example-settings [tableInputs]="tableInputs" (formKey)="getSettings($event)">
+    </example-settings>
+
+    <div class="table" *ngIf="!loader; else loaderView">
+      <app-table
+        [data]="data"
+        [settings]="settings"
+        [filterOptions]="filterOptions"
+        [tableInputs]="tableInputs"
+        [pageSizeOptions]="pageSizeOptions">
+      </app-table>
+    </div>
+  </div>
+
+  <div class="tabs-container d-flex">
+    <div [class.active]="activeTab === 1" class="tab" (click)="toggleTabs(1)">
+      Component
+    </div>
+    <div [class.active]="activeTab === 2" class="tab" (click)="toggleTabs(2)">
+      Template
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 1" class="pre component">
+    <markdown [data]="componentMarkdown"></markdown>
+  </div>
+
+  <div *ngIf="activeTab === 2" class="pre component">
+    <markdown [data]="templateMarkdown"></markdown>
+  </div>
+</div>
+
+<ng-template #loaderView>
+  <div class="loader-container text-center">
+    <div class="loader"></div>
+    <div class="loader"></div>
+    <div class="loader"></div>
+  </div>
+</ng-template>

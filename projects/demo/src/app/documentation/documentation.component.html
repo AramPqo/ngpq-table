@@ -1,0 +1,31 @@
+<div class="container documentation-container">
+  <h1 class="text-center warning">Documentation is is progress!</h1>
+
+  <div class="menu-container text-capitalize d-flex">
+    <div *ngFor="let item of menu; let i = index" class="cp menu">
+      <a [class.active]="i === activeMenuIndex" (click)="initState(item, i)">{{
+        item.title
+      }}</a>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <h2 class="text-center text-capitalize">{{ title }}</h2>
+
+    <div *ngFor="let header of headers">
+      <h2 class="text-capitalize">{{ header.title }}</h2>
+
+      <h1 #outputInProgress class="warning">Outputs documentation is in progress</h1>
+
+      <ngpq-table
+        [data]="state[header.key]"
+        [disableSort]="true"
+        [disableResize]="true"
+        [disablePaginate]="true"
+        [noDataWarning]="outputInProgress"
+        [settings]="header.key !== 'outputData' ? inputSettings : outputSettings"
+        (cellClick)="getCellData($event)">
+      </ngpq-table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="form-container">
+  <div
+    [class.opend]="isShow"
+    class="settings-icon icon"
+    (click)="toggle()">
+    <i *ngIf="!isShow" class="fa fa-cog"></i>
+    <i *ngIf="isShow" class="fa fa-arrow-left"></i>
+  </div>
+
+  <div [class.opend]="isShow" class="form-content">
+    <form [formGroup]="form">
+      <label>
+        <span class="label-content">Selected Actions</span>
+        <input formControlName="selectActions" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Actions</span>
+        <input formControlName="actions" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Details Template</span>
+        <input formControlName="detailsTemplate" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Disable Resize</span>
+        <input formControlName="disableResize" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Disable Paginate</span>
+        <input formControlName="disablePaginate" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Disable Sort</span>
+        <input formControlName="disableSort" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Scroll To Top</span>
+        <input formControlName="scrollToTop" type="checkbox" />
+      </label>
+
+      <label>
+        <span class="label-content">Direction Links</span>
+        <input formControlName="directionLinks" type="checkbox" />
+      </label>
+
+      <label *ngIf="!form.get('disablePaginate')?.value">
+        <span class="label-content">Paginator Size</span>
+        <input class="paginator-max-size" formControlName="paginatorSize" type="number" />
+      </label>
+
+      <div formGroupName="filterOptions" class="filter-options">
+        <div class="options-group-content">Filter Options</div>
+        <label>
+          <span class="label-content"> By Category </span>
+          <input formControlName="byCategory" type="checkbox" />
+        </label>
+
+        <label>
+          <span class="label-content"> Pure </span>
+          <input formControlName="pure" type="checkbox" />
+        </label>
+
+        <ng-container *ngIf="!form.get('filterOptions')?.get('byCategory')?.value">
+          <label>
+            <span class="label-content"> Typeahead Time <small>(ms)</small> </span>
+            <input
+              class="typeahead-time"
+              formControlName="typeaheadTime"
+              type="number"
+              min="2000" />
+          </label>
+
+          <label>
+            <span class="label-content"> Backlight </span>
+            <input formControlName="backlight" type="checkbox" />
+          </label>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+</div>

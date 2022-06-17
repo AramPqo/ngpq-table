@@ -1,0 +1,50 @@
+<div class="container demo-container">
+  <h1>Installation</h1>
+
+  <div
+    (click)="copytext()"
+    class="install-content cp d-flex justify-between"
+    [class.cpoy]="animate">
+    <div>npm install ngpq-table</div>
+    <div class="gray">
+      <i class="fa fa-files-o"></i>
+    </div>
+  </div>
+
+  <h1>Minimal Usage Example</h1>
+  <h3>app.module.ts</h3>
+
+  <div class="pre module">
+    <markdown [data]="markdownModule"></markdown>
+  </div>
+
+  <h3>app.component.ts</h3>
+
+  <div class="pre component">
+    <markdown [data]="markdownComponent"></markdown>
+  </div>
+
+  <div class="mt-20">
+    <ngpq-table
+      [data]="data"
+      [disableResize]="true"
+      [pageSizeOptions]="[5]"
+      [settings]="settings">
+    </ngpq-table>
+  </div>
+
+  <h1>Features</h1>
+  <ul>
+    <li>Flexible possibility of using sync. or async. data</li>
+    <li>Filtering (Smart or Basic)</li>
+    <li>Sorting (asc, desc, original position)</li>
+    <li>Pagination</li>
+    <li>Resizing</li>
+    <li>Actions (Inline Add/Edit at your service)</li>
+    <li>Multiple (Select) Actions</li>
+  </ul>
+  <div>
+    All Features and Example can be viewed llok this changes to examples component
+    <a routerLink="https://arampqo.github.io/ngpq-table/example">Here</a>
+  </div>
+</div>

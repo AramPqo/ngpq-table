@@ -1,0 +1,51 @@
+<tr class="thead-tr">
+  <th
+    *ngFor="let header of tableHeaders; let i = index"
+    [class]="header | headerCell"
+    [attr.th-index]="i"
+    [style.width]="header?.width | safe: 'style'">
+    <ng-container *ngIf="!header.isStatic; else staticTpl">
+      <div class="th-container">
+        <div
+          [class.sorting_asc]="direction === 'asc' && selectedIndex === i"
+          [class.sorting_desc]="direction === 'desc' && selectedIndex === i"
+          [class.sort]="!header.disableSort"
+          (click)="sortData(header, i)"
+          class="th-box">
+          <div class="th-content">
+            {{ header.title }}
+          </div>
+          <ng-container *ngIf="!header.disableSort && !disableSort">
+            <div class="icon asc">
+              <ngpq-icon icon="arrow"></ngpq-icon>
+            </div>
+            <div class="icon desc">
+              <ngpq-icon icon="arrow"></ngpq-icon>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #staticTpl>
+      <div class="select-actions-container select-actions-all-container">
+        <input
+          type="checkbox"
+          class="select-actions"
+          [(ngModel)]="isSelectAll"
+          (ngModelChange)="selectDataService.selectAllData$.next(isSelectAll)" />
+        <div class="select-actions-dropdown">
+          <ngpq-dropdown
+            class="disabled-hover"
+            [items]="selectActions"
+            displayName="title"
+            (dropdownValue)="emitSelectedActions($event)">
+          </ngpq-dropdown>
+        </div>
+      </div>
+    </ng-template>
+  </th>
+  <ng-container *ngIf="actions && actions.length">
+    <th class="actions-th">Actions</th>
+  </ng-container>
+</tr>

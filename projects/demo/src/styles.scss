@@ -1,0 +1,143 @@
+@import '~prismjs/plugins/line-numbers/prism-line-numbers.css';
+@import '~prismjs/themes/prism-okaidia.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.pre.component pre {
+  overflow: hidden;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.pre {
+  font-size: 13px;
+}
+
+.install-content {
+  padding: 10px;
+  border-radius: 2px;
+  font-family: sans-serif;
+  border: 1px solid #dee3ef;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+body {
+  margin: 0;
+}
+
+.type-content {
+  width: 285px;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link,
+.type-content {
+  color: #2f7bac;
+  background: #dbe4ec;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.main-container {
+  width: 90%;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.info {
+  color: #28a745;
+}
+
+.code {
+  color: #d72626;
+}
+
+.main-content {
+  padding: 30px 10px;
+}
+
+.image {
+  text-align: center;
+
+  img {
+    width: 125px;
+  }
+}
+
+.status-content {
+  text-align: center;
+
+  div {
+    .fa-frown-o {
+      color: red;
+    }
+
+    .fa-meh-o {
+      color: #ffc107;
+    }
+
+    .fa-smile-o {
+      color: #28a745;
+    }
+  }
+}
+
+.status-content:not(.form-td) {
+  font-size: 25px;
+} 
+
+.status-content-th {
+  div.th-container {
+    justify-content: center;
+  }
+}
+
+.status-content.form-td {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rate-content {
+  width: 90%;
+  margin: 0 auto;
+}

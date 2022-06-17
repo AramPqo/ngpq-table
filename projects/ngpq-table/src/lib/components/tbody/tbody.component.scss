@@ -1,0 +1,33 @@
+@import "./../../../assets/scss/variable.scss";
+
+tr {
+  cursor: pointer;
+  border: 1px solid darken($gray-400, 1%) !important;
+  font-family: "Roboto";
+  font-size: 18px;
+  &.tbody-tr {
+    &:hover {
+      transition: background-color 0.3s;
+      background-color: $gray-300;
+    }
+  }
+}
+
+td {
+  border: none;
+  padding: 16px 10px !important;
+  position: relative;
+  div.td-content,
+  div.actions-container {
+    @include text-ellipsis;
+    .content {
+      @include text-ellipsis;
+    }
+  }
+
+  &.details-container {
+    background-color: #f6fafd;
+    white-space: normal;
+    cursor: auto;
+  }
+}
