@@ -1,9 +1,14 @@
 import { TableInputs } from '../../models/table-inputs.modes';
-import { BASIC_DATA, DETAILS_TEMPLATE } from './templates';
+import { BASIC_DATA, DETAILS_TEMPLATE, NO_DATA_WARNING } from './templates';
+
+enum TEMPLATE_TYPE_INPUT {
+  DETAILS_TEMPLATE = 'detailsTemplate',
+  NO_DATA_WARNING = 'noDataWarning',
+}
 
 export class MarkdownComponent {
   tableInputs: TableInputs;
-  inputs: Array<{ key: string; template: string; ts: string }>;
+  inputs: Array<{ key: string; template: string; ts: string | null }>;
   templateMarkdown: string;
   componentMarkdown: string;
   basicData = BASIC_DATA;
@@ -19,7 +24,8 @@ ${this.inputs.map(v => v.template).join('\n')}
     </ngpq-table>
 
 ${this.tableInputs.detailsTemplate ? DETAILS_TEMPLATE : ``}
-    `;
+${this.tableInputs.noDataWarning ? NO_DATA_WARNING : ``}
+`;
 
     this.componentMarkdown = `
     \`\`\`typescript
@@ -45,11 +51,15 @@ ${this.tableInputs.detailsTemplate ? DETAILS_TEMPLATE : ``}
         const result = {
           key: v,
           template: `        [${v}]="${v}"`,
-          ts: this.getTsVariable(v),
+          ts:
+            v !== TEMPLATE_TYPE_INPUT.DETAILS_TEMPLATE &&
+            v !== TEMPLATE_TYPE_INPUT.NO_DATA_WARNING
+              ? this.getTsVariable(v)
+              : null,
         };
         return result;
       })
-      .filter(v => this.tableInputs[v.key]);
+      .filter(v => this.tableInputs[v.key] && v.ts);
   }
 
   getTsVariable(key) {

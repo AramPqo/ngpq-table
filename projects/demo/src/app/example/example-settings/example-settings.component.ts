@@ -14,6 +14,7 @@ export class ExampleSettingsComponent implements OnInit {
 
   @Output() formKey = new EventEmitter<{ key: string; value: Comment }>();
   @Output() emitEntityKey = new EventEmitter<string>();
+
   form: FormGroup;
   oldForm: FormGroup;
   isShow: boolean;

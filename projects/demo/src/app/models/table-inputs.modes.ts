@@ -10,6 +10,7 @@ export class TableInputs {
     public disablePaginate: boolean,
     public disableSort: boolean,
     public paginatorSize: number,
+    public noDataWarning: boolean,
     public directionLinks: boolean,
     public filterOptions: FilterOption,
   ) {}

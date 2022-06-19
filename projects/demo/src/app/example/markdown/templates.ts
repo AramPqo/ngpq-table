@@ -113,3 +113,9 @@ export const DETAILS_TEMPLATE = `
         </li>
       </ul>
 </ng-template>`;
+
+
+export const NO_DATA_WARNING = ` 
+<h1 #noDataWarning>
+      Data Is Empty
+</h1>`;

@@ -54,6 +54,7 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
       scrollToTop: true,
       disablePaginate: false,
       disableSort: false,
+      noDataWarning: false,
       paginatorSize: 4,
       directionLinks: true,
       filterOptions: new FilterOption(true, false, 2000, true),
@@ -64,10 +65,12 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
     this.showLoader();
     this.checkFilterOptions(key, value);
     this.checkPaginate(key, value);
+    this.checkNoDataWarning(key, value);
 
     this.tableInputs[key] = value[key];
     this.updateMarkdown();
 
+    debugger;
     if (this.loader) {
       setTimeout(() => {
         this.hideLoader();
@@ -88,6 +91,14 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
       } else {
         this.pageSizeOptions = PAGESIZE_OPTIONS;
       }
+    }
+  }
+
+  checkNoDataWarning(key, value) {
+    if (key === 'noDataWarning' && value[key]) {
+      this.data = [];
+    } else {
+      this.getTableData();
     }
   }
 
