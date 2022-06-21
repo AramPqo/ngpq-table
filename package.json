@@ -9,7 +9,10 @@
     "test": "ng test",
     "build:git": "ng build --base-href=\"https://arampqo.github.io/ngpq-table/\"",
     "push": "npx angular-cli-ghpages --dir=dist/ngpq-table",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -42,12 +45,14 @@
     "@typescript-eslint/parser": "4.28.2",
     "eslint": "^7.26.0",
     "jasmine-core": "~3.8.0",
+    "@cypress/schematic": "^2.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^12.1.1",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "cypress": "latest"
   }
 }

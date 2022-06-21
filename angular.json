@@ -26,13 +26,8 @@
             "polyfills": "projects/demo/src/polyfills.ts",
             "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
-            ],
-            "styles": [
-              "projects/demo/src/styles.scss"
-            ],
+            "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"],
+            "styles": ["projects/demo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -94,13 +89,8 @@
             "tsConfig": "projects/demo/tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
-            ],
-            "styles": [
-              "projects/demo/src/styles.scss"
-            ],
+            "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"],
+            "styles": ["projects/demo/src/styles.scss"],
             "scripts": []
           }
         },
@@ -111,6 +101,39 @@
               "projects/demo/src/**/*.ts",
               "projects/demo/src/**/*.html"
             ]
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "ngpq-table-pro:serve",
+            "configFile": "projects/demo/cypress.config.js"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngpq-table-pro:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/demo/cypress.config.js"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "ngpq-table-pro:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngpq-table-pro:serve:production"
+            }
           }
         }
       }
