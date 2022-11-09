@@ -14,7 +14,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { FilterDetail, FilterOption } from '../../models/filter.model';
+import { FilterData, FilterDetail, FilterOption } from '../../models/filter.model';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
 import { Subscription } from 'rxjs';
 import { UsualFilterComponent } from './usual-filter/usual-filter.component';
@@ -80,10 +80,8 @@ export class FilterComponent implements OnInit, OnChanges, OnDestroy {
     this.componentRef = this.filterContainer.createComponent(componentFactory);
     this.createComponentInstance(this.componentRef.instance);
 
-    this.instanceSub = this.componentRef.instance.emitFilteredData.subscribe(
-      (data: any[] | { data: any[]; value: string }) => {
-        this.emitFilteredData.emit(data);
-      },
+    this.componentRef.instance.emitFilteredData.subscribe((data: any[] | FilterData) =>
+      this.emitFilteredData.emit(data),
     );
   }
 

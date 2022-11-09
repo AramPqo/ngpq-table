@@ -10,3 +10,7 @@ export class FilterOption {
 export class FilterDetail {
   constructor(public key: string, public title: string, public value?: any) {}
 }
+
+export class FilterData {
+  constructor(public data: any[], public value: string) {}
+}

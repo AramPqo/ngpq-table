@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { FilterDetail, FilterOption } from './models/filter.model';
+import { FilterData, FilterDetail, FilterOption } from './models/filter.model';
 import { cloneDeep, createModes } from './helpers/table.util';
 import { createActions, modifiedTableHeaders } from './helpers/initialize';
 import { doSort, isSame, isTemplate } from './helpers/sort';
@@ -345,9 +345,9 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
    * should be a data type or a data type with an active filter `value`
    * @param data
    */
-  getFilteredData(data: any[] | { data: any[]; value: string }) {
+  getFilteredData(data: any[] | FilterData) {
     if (!this.filterOptions?.byCategory && this.filterOptions?.backlight) {
-      this.data = (data as { data: any[]; value: string }).data;
+      this.data = (data as FilterData).data;
       this.backlightValue = (data as any).value;
     } else {
       this.data = data as any[];
