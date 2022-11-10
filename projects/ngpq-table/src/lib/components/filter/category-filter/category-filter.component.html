@@ -1,23 +1,22 @@
 <div class="d-flex">
-
   <div class="d-flex">
     <div class="dropdown-container">
-      <ngpq-dropdown 
-          [defaultItem]="activeCategory.title" 
-          [items]="filterDetails" 
-          displayName="title"
-          (dropdownValue)="getFilterDetails($event)">
+      <ngpq-dropdown
+        [defaultItem]="activeCategory.title"
+        [items]="filterDetails"
+        displayName="title"
+        (dropdownValue)="getFilterDetails($event)">
       </ngpq-dropdown>
     </div>
 
     <div class="filter-container" *ngIf="filterDetails">
-      <input 
-          #filterEl 
-          [placeholder]="activeCategory?.title ? activeCategory.title : ''"
-          (keyup.enter)="setValue(filterEl);" 
-          type="text" 
-          class="form-control rounded-right">
-          
+      <input
+        #filterEl
+        [placeholder]="activeCategory && activeCategory.title ? activeCategory.title : ''"
+        (keyup.enter)="setValue(filterEl)"
+        type="text"
+        class="form-control rounded-right" />
+
       <div class="search">
         <ngpq-icon icon="search"></ngpq-icon>
       </div>
@@ -25,18 +24,17 @@
   </div>
 
   <div *ngIf="activeFilters.length" class="active-filter-options-container">
-    <div *ngFor="let filter of activeFilters; let i = index;">
+    <div *ngFor="let filter of activeFilters; let i = index">
       <div class="active-filters">
-        <div class="filter-option">{{filter.title}}</div>
-        <div class="filter-value">{{filter.value}}</div>
+        <div class="filter-option">{{ filter.title }}</div>
+        <div class="filter-value">{{ filter.value }}</div>
       </div>
-      <div (click)="resetFilter(filter.key);" class="chips">&times;</div>
+      <div (click)="resetFilter(filter.key)" class="chips">&times;</div>
     </div>
 
     <div *ngIf="activeFilters.length > 1">
       <div class="reset">Reset Filters</div>
-      <div class="chips" (click)="resetFilter();">&times;</div>
+      <div class="chips" (click)="resetFilter()">&times;</div>
     </div>
   </div>
-
 </div>

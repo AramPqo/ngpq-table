@@ -5,7 +5,7 @@
   <!-- Header -->
   <div
     class="table-header-container"
-    [class.ngpq-hidden]="!mainData?.length"
+    [class.ngpq-hidden]="!(mainData && mainData.length)"
     *ngIf="filterOptions || createAction">
     <!-- Filteraction -->
     <div *ngIf="filterOptions && mainData?.length" class="filteration-container">
@@ -87,8 +87,8 @@
 
     <div *ngIf="data?.length && !disablePaginate" class="d-flex table-footer">
       <div class="items-count">
-        Showing {{ pageSize !== data?.length ? displayData.length : pageSize }} of
-        {{ data?.length }} Entries
+        Showing {{ pageSize !== data.length ? displayData.length : pageSize }} of
+        {{ data.length }} Entries
       </div>
       <div class="select-mode-container dropdown-container" *ngIf="modes.length > 1">
         <ngpq-dropdown

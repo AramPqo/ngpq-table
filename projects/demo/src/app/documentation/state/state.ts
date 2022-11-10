@@ -228,7 +228,7 @@ export const SETTINGS = {
       description: {
         template: `
         Component with which you can get current value and show as you want.
-        You can see an <a href="example"> example here </a>
+        You can see an <a href="https://github.com/AramPqo/ngpq-table/blob/master/projects/demo/src/app/example/custom-email/custom-email.component.ts" target="_blank"> example here </a>
         `,
       },
     },

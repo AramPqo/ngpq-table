@@ -74,6 +74,6 @@ export class TableComponent implements OnInit {
   }
 
   tableDataChanges() {
-    console.warn(`Table data has been changed`);
+    // console.warn(`Table data has been changed`);
   }
 }

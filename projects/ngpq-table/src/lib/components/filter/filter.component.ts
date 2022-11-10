@@ -80,8 +80,8 @@ export class FilterComponent implements OnInit, OnChanges, OnDestroy {
     this.componentRef = this.filterContainer.createComponent(componentFactory);
     this.createComponentInstance(this.componentRef.instance);
 
-    this.componentRef.instance.emitFilteredData.subscribe((data: any[] | FilterData) =>
-      this.emitFilteredData.emit(data),
+    this.instanceSub = this.componentRef.instance.emitFilteredData.subscribe(
+      (data: any[] | FilterData) => this.emitFilteredData.emit(data),
     );
   }
 

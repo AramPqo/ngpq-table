@@ -33,7 +33,7 @@ export class AppModule { }
 app.component.ts
 ```typescript
 import { Component } from '@angular/core';
-import { Settings } from 'ngpq-table'; 
+import { Settings } from 'ngpq-table';
 
 @Component({
   selector: 'app-root',
@@ -87,4 +87,4 @@ app.component.html
 - Actions (Inline Add/Edit at your service)
 - Multiple (Select) Actions
 
-All Features and Example can be viewed here [Here](https://github.com/user/repo)
+All Features and Example can be viewed here [Here](https://arampqo.github.io/ngpq-table/example)

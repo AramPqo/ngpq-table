@@ -155,7 +155,6 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
 
   createTableData() {
     if (Array.isArray(this.data)) {
-      this.checkWrongPropertyNames();
       this.mainData = cloneDeep(this.data);
 
       if (this.filterService.activeFilter?.length) {
@@ -174,24 +173,6 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
       this.updateDisplayData();
     } else {
       throw new Error('Invalid data for ngpq-table');
-    }
-  }
-
-  checkWrongPropertyNames() {
-    const wrongProperties: string[] = [];
-
-    this.data.forEach(d => {
-      Object.keys(d).forEach((key: string) => {
-        if (!(key in this.settings) && !wrongProperties.find(wp => wp === key)) {
-          wrongProperties.push(key);
-        }
-      });
-    });
-
-    if (wrongProperties.length) {
-      wrongProperties.forEach(property => {
-        console.warn(`"${property}" missing in settings`);
-      });
     }
   }
 

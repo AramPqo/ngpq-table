@@ -51,7 +51,7 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
       actions: true,
       detailsTemplate: true,
       disableResize: false,
-      scrollToTop: true,
+      scrollToTop: false,
       disablePaginate: false,
       disableSort: false,
       noDataWarning: false,
@@ -70,7 +70,6 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
     this.tableInputs[key] = value[key];
     this.updateMarkdown();
 
-    debugger;
     if (this.loader) {
       setTimeout(() => {
         this.hideLoader();
