@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["prismjs"],
             "outputPath": "dist/ngpq-table",
             "index": "projects/demo/src/index.html",
             "main": "projects/demo/src/main.ts",

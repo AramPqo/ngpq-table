@@ -2,15 +2,16 @@ export const COMMON = {
   requiredData: [
     {
       input: 'data',
-      type: 'Array<any>',
+      type: 'any[]',
       description: {
         template: `
-          Basic data that is displayed in the table (Works both sync. and async).
-          What we see in table is dependent on data structure, 
-          If there is no template <a class="link"s link="github/datatemplate"> template </a> 
-          then table view will show corresponding value;
-          It is also possible to show in the table view <a class="link"s link="github/customComponent"> custom component </a> created by you.
-          <a href="/" target="_blanck" class="link">Example.</a>
+          Basic data that is displayed in the table (Works like a sync. and async. data).
+          What we see in table is dependent on data structure.
+          <br>
+          If there is no <span class="info">template</span>
+          then table view will show corresponding value.
+          <br>
+          It is also possible to show in the table view <a class="link" href="https://github.com/AramPqo/ngpq-table/blob/master/projects/demo/src/app/example/custom-email/custom-email.component.ts" target="_blank""> custom component </a> created by you.
           `,
       },
     },
@@ -19,7 +20,7 @@ export const COMMON = {
       type: '{ [key: string]: Settings; }',
       description: {
         template: `
-        <span class="info"> Settings provide Table Cells: </span> Width, class name, <a link="form" class="link" link="form">form</a> , disable sorting, disable filtering, Render custom Component
+        <span class="info"> Settings provide Table Cells: </span> width, class name, <a link="form" class="link" link="form">form</a> , disable sorting, disable filtering, rendering custom component for table row
         It provides each column.
         More info. about <a link="settings" class="link"> Settings. </a>
         `,
@@ -39,12 +40,12 @@ export const COMMON = {
     },
     {
       input: 'pageSizeOptions',
-      type: 'Array<number | string>',
+      type: 'number[] | string[]',
       description: 'Provides the count of rows in the table.',
     },
     {
       input: 'actions',
-      type: 'Array<Action>',
+      type: 'Action[]',
       description: {
         template: `
         There are 2 embedded actions: create and update.
@@ -55,7 +56,7 @@ export const COMMON = {
     },
     {
       input: 'selectActions',
-      type: 'Array<SelectAction>',
+      type: 'SelectAction[]',
       description: {
         template: `
         It is for multiple rows. You can get the <a link="selectActionEvent" class="link">SelectActionEvent</a> by clicking on the dropdown on the left.
@@ -89,7 +90,7 @@ export const COMMON = {
     },
     {
       input: 'detailsTemplate',
-      type: 'TemplateRef<any>',
+      type: 'TemplateRef&lt;any&gt;',
       description: {
         template: `
           The <span class="type-content"> TemplateRef&lt;any&gt </span>
@@ -228,7 +229,7 @@ export const SETTINGS = {
       description: {
         template: `
         Component with which you can get current value and show as you want.
-        You can see an <a href="https://github.com/AramPqo/ngpq-table/blob/master/projects/demo/src/app/example/custom-email/custom-email.component.ts" target="_blank"> example here </a>
+        You can see an <a class="link" href="https://github.com/AramPqo/ngpq-table/blob/master/projects/demo/src/app/example/custom-email/custom-email.component.ts" target="_blank"> example here </a>
         `,
       },
     },
@@ -238,7 +239,7 @@ export const SETTINGS = {
       description: {
         template: `
         Form propetry is used to have the opportunity embedded <span class="code">create</span> or <span class="code">update</span>.
-        Form propetry can have Error Message, Placeholder, e.t.c. given by you.
+        Form propetry can have error message, placeholder, e.t.c. given by you.
         For more info. you can see an example <a link="form" class="link" link="form">Example</a> 
       `,
       },
@@ -250,26 +251,17 @@ export const FORM = {
   optionalData: [
     {
       input: 'control',
-      type: 'Array<any | Array<Validators>>',
+      type: 'any[] | Validators[]',
       description: {
         template: `
         <div> Control can be either Array &lt;any&gt; type or Array 
         &lt;<a href="https://angular.io/api/forms/Validators" target="_blanck" class="link">Validators</a>&gt; type. </div>
-        <div> It works like 'ReactiveFormsModule', but there are some differences. </div>
+        <div> It works like <a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blanck" class="link">ReactiveFormsModule</a>, but there are some differences. </div>
         If there is no need for default value the first item should be 'null',
         otherwise it will be 'string' or 'number' (for boolean and other types we have <span class="info"> type </span> propery).
-        which during the <span class="code"> create </span> set item value in the form as default value.
-        The Second item getting Validators array as in 
+        Which, at creation time, sets the value of the item in the form as the default value. The second item gets an array of validators, just like in 
         <a href="https://angular.io/guide/form-validation#validating-input-in-reactive-forms" target="_blanck" class="link"> Angular Reactive Forms Validators</a>
         <br/>
-        <br/>
-        <a href="github/" target="_blanck" class="link">Example</a>
-
-       <span><a href="github/" target="_blanck" class="link"> ReactiveFormsModule</a> </span>.
-        /* { [key: string]: Settings; }	*/ Please note, key must be the same as a key in data array objects.
-        karas routerlink dnes orinak { [key: string]: <link> Settings </link>; } dnes 
-        click anen ed linkin @ngnen Settingsi mej heto noric SettingsForm-in click ani
-        haytnvi SettingsForm-i route-um 
         `,
       },
     },
@@ -289,7 +281,7 @@ export const FORM = {
     },
     {
       input: 'actions',
-      type: 'Array<Action>',
+      type: 'Action[]',
       description: `
         There are two inline actions: create and update.
         For inline actions it is required to use (to create) <span class="code">isCreate</span> (to update) <span class="code">isUpdate</span> in the boolean action inputs.
@@ -306,7 +298,7 @@ export const FORM = {
       input: 'errorMessage',
       type: 'string',
       description: `
-       Gives the Error Message
+       Gives the error message
       `,
     },
   ],

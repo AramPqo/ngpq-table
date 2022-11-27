@@ -19,7 +19,7 @@ import { Comments } from '../assets/db/comments-data';
   declarations: [AppComponent, DemoComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     HttpClientModule,
     NgPqTableModule,
     ExampleModule,

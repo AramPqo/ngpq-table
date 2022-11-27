@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { Settings } from 'projects/ngpq-table/src/public-api';
+import { Action, Settings } from 'projects/ngpq-table/src/public-api';
 import { MARKDOWN_MODULE, MARKDOWN_COMPONENT } from './markdown/templates';
 
 @Component({

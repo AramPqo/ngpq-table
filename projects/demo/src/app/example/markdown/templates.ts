@@ -75,9 +75,14 @@ export const BASIC_DATA = `
       data = [
         {
           "id": 1,
+          "postId": 1,
           "name": "id labore ex et quam laborum",
           "email": "Eliseo@gardner.biz",
           "description": "laudantium enim quasi est...",
+          "status": {
+            template: '<i class="fa fa-frown-o"></i>',
+            value: status
+          },
           "completed": {
             template: '<i class="fa fa-check"></i>',
             value: true
@@ -88,7 +93,7 @@ export const BASIC_DATA = `
 `;
 
 export const DETAILS_TEMPLATE = ` 
-<ng-template let-comment="row" #commentDetails>
+<ng-template let-comment="row" #tableDetails>
       <ul>
         <li>
             ID: {{comment.id}}
@@ -113,7 +118,6 @@ export const DETAILS_TEMPLATE = `
         </li>
       </ul>
 </ng-template>`;
-
 
 export const NO_DATA_WARNING = ` 
 <h1 #noDataWarning>

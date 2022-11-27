@@ -66,7 +66,7 @@ ${this.tableInputs.noDataWarning ? NO_DATA_WARNING : ``}
     if (this.isFormValue(key)) {
       return `\n      ${this.defineInputsKey(key)} = ${this.preettyFyObject(this[key])};`;
     } else {
-      return `${key} = ${this.tableInputs[key]};`;
+      return `\n      ${key} = ${this.tableInputs[key]};`;
     }
   }
 
@@ -93,18 +93,20 @@ ${this.tableInputs.noDataWarning ? NO_DATA_WARNING : ``}
   }
 
   preettyFyObject(items: Object[] | Object) {
+    let isObj = false;
+
     if (!Array.isArray(items)) {
       items = [items];
+      isObj = true;
     }
 
     const result: Object[] = [];
 
-    (items as Object[]).forEach(obj => {
+    (items as Object[]).forEach((obj, i) => {
       const prettyObj = JSON.stringify(obj, null, 7).replaceAll('}', '      }');
-
       result.push(prettyObj);
     });
 
-    return result;
+    return isObj ? result : '[' + result + ']';
   }
 }

@@ -338,10 +338,12 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
       this.loaderService.show();
     }
 
-    this.modes = [
-      ...this._modes.filter(mode => mode < this.data.length),
-      this.data.length,
-    ];
+    if (!this.disablePaginate) {
+      this.modes = [
+        ...this._modes.filter(mode => mode < this.data.length),
+        this.data.length,
+      ];
+    }
 
     this.pageSize = this.modes[0];
     this.filteredData = cloneDeep(this.data);
