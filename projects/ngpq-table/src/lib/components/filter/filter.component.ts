@@ -85,13 +85,13 @@ export class FilterComponent implements OnInit, OnChanges, OnDestroy {
     );
   }
 
-  createComponentInstance(instance) {
+  createComponentInstance(instance: CategoryFilterComponent | UsualFilterComponent) {
     instance.data = this.mainData;
     instance.filterDetails = this.filterDetails;
     instance.filterOptions = this.filterOptions;
 
     if (this.filterOptions.byCategory) {
-      instance.mainData = this.mainData;
+      (instance as CategoryFilterComponent).mainData = this.mainData;
     }
   }
 

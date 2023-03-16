@@ -16,8 +16,8 @@ export class MarkdownComponent {
   defineMarkdown() {
     this.templateMarkdown = `
     \`\`\`html
-    <ngpq-table 
-        [data]="data" 
+    <ngpq-table
+        [data]="data"
         [settings]="settings"
 ${this.inputs.map(v => v.template).join('\n')}
         ${this.tableInputs.detailsTemplate ? `[detailsTemplate]="tableDetails"` : ''}>

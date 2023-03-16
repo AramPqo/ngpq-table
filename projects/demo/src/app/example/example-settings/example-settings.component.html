@@ -1,8 +1,5 @@
 <div class="form-container">
-  <div
-    [class.opend]="isShow"
-    class="settings-icon icon"
-    (click)="toggle()">
+  <div [class.opend]="isShow" class="settings-icon icon" (click)="toggle()">
     <i *ngIf="!isShow" class="fa fa-cog"></i>
     <i *ngIf="isShow" class="fa fa-arrow-left"></i>
   </div>
@@ -49,9 +46,12 @@
         <input formControlName="scrollToTop" type="checkbox" />
       </label>
 
-      <label>
+      <label [class.disabled]="form.get('disablePaginate')?.value">
         <span class="label-content">Direction Links</span>
-        <input formControlName="directionLinks" type="checkbox" />
+        <input
+          [attr.disabled]="form.get('disablePaginate')?.value"
+          formControlName="directionLinks"
+          type="checkbox" />
       </label>
 
       <label *ngIf="!form.get('disablePaginate')?.value">

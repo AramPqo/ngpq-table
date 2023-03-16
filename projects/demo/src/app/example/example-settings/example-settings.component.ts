@@ -10,8 +10,7 @@ import { TableInputs } from '../../models/table-inputs.modes';
   styleUrls: ['./example-settings.component.scss'],
 })
 export class ExampleSettingsComponent implements OnInit {
-  @Input() tableInputs: TableInputs | any;
-
+  @Input() tableInputs: TableInputs;
   @Output() formKey = new EventEmitter<{ key: string; value: Comment }>();
   @Output() emitEntityKey = new EventEmitter<string>();
 

@@ -3,8 +3,9 @@
     <example-settings [tableInputs]="tableInputs" (formKey)="getSettings($event)">
     </example-settings>
 
-    <div class="table" *ngIf="!loader; else loaderView">
+    <div class="table">
       <app-table
+        *ngIf="!loader; else loaderView"
         [data]="data"
         [settings]="settings"
         [filterOptions]="filterOptions"
