@@ -24,9 +24,6 @@ export class ExampleComponent extends MarkdownComponent implements OnInit {
   filterOptions: FilterOption = new FilterOption(true, false, 2000, false);
   pageSizeOptions = PAGESIZE_OPTIONS;
   activeTab: number = 1;
-  componentMarkdown: string;
-  templateMarkdown: string;
-  tableInputs: TableInputs;
   loader: boolean;
 
   actions: Action[];

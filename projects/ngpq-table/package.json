@@ -1,6 +1,6 @@
 {
   "name": "ngpq-table",
-  "version": "0.2.6",
+  "version": "1.3.1",
   "description": "Smart Table for filtering, sorting, pagination, resizing, creating, updating",
   "author": "Aram Petrosyan",
   "repository": {

@@ -147,9 +147,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngpq-table-pro",
-  "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
   }
 }
