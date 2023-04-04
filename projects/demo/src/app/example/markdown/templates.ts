@@ -71,7 +71,7 @@ export const BASIC_DATA = `
           }
         }
       };
-            
+
       data = [
         {
           "id": 1,
@@ -81,7 +81,7 @@ export const BASIC_DATA = `
           "description": "laudantium enim quasi est...",
           "status": {
             template: '<i class="fa fa-frown-o"></i>',
-            value: status
+            value: true
           },
           "completed": {
             template: '<i class="fa fa-check"></i>',
@@ -92,7 +92,7 @@ export const BASIC_DATA = `
       ];
 `;
 
-export const DETAILS_TEMPLATE = ` 
+export const DETAILS_TEMPLATE = `
 <ng-template let-comment="row" #tableDetails>
       <ul>
         <li>
@@ -119,7 +119,7 @@ export const DETAILS_TEMPLATE = `
       </ul>
 </ng-template>`;
 
-export const NO_DATA_WARNING = ` 
+export const NO_DATA_WARNING = `
 <h1 #noDataWarning>
       Data Is Empty
 </h1>`;
