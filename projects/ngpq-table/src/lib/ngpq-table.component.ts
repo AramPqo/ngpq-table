@@ -81,6 +81,7 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
   private filteredData: any[];
   displayData: any[] = [];
   tableHeaders: TableHeader[];
+  tableUid: string;
 
   private _modes: number[];
   pageNumber = 1;
@@ -107,6 +108,7 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
     if (!this.settings) {
       throw new Error(`'settings' property is required`);
     }
+    this.tableUid = self.crypto.randomUUID();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -155,6 +157,19 @@ export class NgPqTableComponent implements OnInit, OnChanges, OnDestroy {
 
   createTableData() {
     if (Array.isArray(this.data)) {
+      if (!this.data.filter(v => v.id).length) {
+        const idList: string[] = [];
+        for (let i = 0; i < this.data.length; i++) {
+          const uuid = self.crypto.randomUUID();
+          idList[i] = uuid;
+        }
+
+        this.data.map((v, i) => {
+          v.id = idList[i];
+          return v;
+        });
+      }
+
       this.mainData = cloneDeep(this.data);
 
       if (this.filterService.activeFilter?.length) {

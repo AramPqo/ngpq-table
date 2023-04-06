@@ -1,4 +1,5 @@
 <div
+  [attr.ngpq-table-body]="tableUid"
   class="ngpq-container"
   [class.empty-table]="!displayData.length || !displayData.length"
   #tableContainer>
@@ -26,7 +27,7 @@
       [class.text-right]="!filterOptions"
       [class.disabled-create]="isCreate">
       <div
-        [innerHTML]="createAction.template | safe: 'html'"
+        [innerHTML]="createAction.template | safe : 'html'"
         [class]="createAction.className"
         (click)="getCreateActionEvent()"></div>
     </div>
@@ -62,7 +63,6 @@
       <!-- Loader -->
 
       <div class="backdrop"></div>
-
       <!-- Tbody -->
       <ng-container *ngIf="data && data?.length; else emptyData">
         <tbody
@@ -114,7 +114,7 @@
 
     <!-- Warning -->
     <ng-template #emptyData>
-      <div class="empty-data-container" [innerHTML]="warning | safe: 'html'"></div>
+      <div class="empty-data-container" [innerHTML]="warning | safe : 'html'"></div>
     </ng-template>
     <!-- Warning -->
   </div>
